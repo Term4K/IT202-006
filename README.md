@@ -1,2 +1,2 @@
 # IT202-006
-repo for NJIT IT202 class
+Repo for NJIT IT202 Spring Class
