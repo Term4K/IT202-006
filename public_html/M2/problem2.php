@@ -12,6 +12,9 @@ function getTotal($arr) {
     }
     //TODO do rounding stuff here
     $total = number_format(round($total, 2), 2);
+    /* This is to display it without the single quotes. Seems as though var_export causes it
+    echo "The total is " . $total;
+    */
     
     echo "The total is " . var_export($total, true);
 }
