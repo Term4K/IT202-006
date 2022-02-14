@@ -29,6 +29,9 @@
         nav ul li {
             display: inline;
         }
+        nav ul li::before {
+            content: ''
+        }
         nav ul li a {
             display: inline-block;
             text-align: center;
@@ -36,6 +39,18 @@
         }
         nav ul li a:hover {
             background-color: rgb(173, 166, 166);
+        }
+        ul li {
+            list-style-type: none;
+        }
+        ul li::before {
+            content: '✓ '
+        }
+        h1 {
+            text-transform: capitalize;
+        }
+        a {
+            text-transform: capitalize;
         }
     </style>
     <!-- make the necessary edits above this line -->
