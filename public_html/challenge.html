@@ -7,13 +7,27 @@
     <script>
         window.addEventListener("load", () => {
             console.log("loaded via javascript");
-            //TODO: add any extra onload processing you may need here
+            //TODO: add any extra onload processing you may need here            
+            window.addEventListener('hashchange',()=>{
+                let u = window.location.href;
+                if(u.includes("#login")) {
+                    getCurrentSelection("login");
+                } else if (u.includes("#register")) {
+                    getCurrentSelection("register");
+                } else if (u.includes("#profile")) {
+                    getCurrentSelection("profile");
+                } else if (u.includes("#logout")){
+                    getCurrentSelection("logout");
+                }
+            });
         });
-        function getCurrentSelection() {
+        function getCurrentSelection(name) {
             setTimeout(() => {
                 //added this delay here as some solutions may require it to update properly (i.e., click code may complete before the navigation changes)
                 //TODO: add code for processing the current selection 
-
+                console.log(name);
+                document.getElementsByTagName("h1")[0].innerHTML = name;
+                document.title = name;
                 //Note: likely you'll want to call updateCurrentPage towards the end
             }, 100);
         }
