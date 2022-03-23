@@ -16,6 +16,7 @@
         var ballSpeed = 2;
         var paddleSpeed = 5;
         var drawables = [];
+        var mode = "Normal";
         // Key Codes
         var W = 87;
         var S = 83;
@@ -34,6 +35,18 @@
         // Keep track of the score
         var leftScore = 0;
         var rightScore = 0;
+        function diff(x){
+            if(x == 0.001){
+                mode = "Extreme";
+            } else if(x == 0.4) {
+                mode = "Hard"
+            } else if(x == 0.6){
+                mode = "Normal";
+            } else {
+                mode = "Easy";
+            }
+            visibilityPercent = x;
+        }
         function init() {
             canvas = document.getElementById("board");
             if (canvas.getContext) {
@@ -200,12 +213,12 @@
             // Score if the ball goes past a paddle
             //left side of ball passes left side of paddle
             if (ball.x < leftPaddle.x) {
-                rightScore++;
+                rightScore += Math.floor(Math.sqrt(Math.pow(ball.sX, 2) + Math.pow(ball.sY, 2)));
                 resetBall();
             }
             //right side of ball passes right side of paddle 
             else if (ball.x + ball.w > rightPaddle.x + rightPaddle.w) {
-                leftScore++;
+                leftScore += Math.floor(Math.sqrt(Math.pow(ball.sX, 2) + Math.pow(ball.sY, 2)));
                 resetBall();
             }
         }
@@ -217,6 +230,8 @@
             let offsetY = canvas.height * .05;
             let offsetX = canvas.width * .01;
             context.fillText('Score: ' + leftScore, offsetX, offsetY);
+            context.textAlign = 'center';
+            context.fillText(mode + ' Mode', canvas.height * .5, offsetY);
             context.textAlign = 'right';
             context.fillText('Score: ' + rightScore, canvas.width - offsetX, offsetY);
         }
@@ -252,7 +267,7 @@
 
 <body onload="init();">
     <div>
-    <h1 style="display: inline;">AI Pong Sample</h1>
+    <h1 style="display: inline;">Modified AI Pong</h1>
     <h3 style="display: inline;"><a href="index.html">Back</a></h3>
     </div>
     <a href="http://bencentra.com/2017-07-11-basic-html5-canvas-games.html">Collection of Canvas based games by Ben
@@ -262,6 +277,17 @@
 
         </canvas>
     </main>
+    <div>
+
+    </div>
+    <div>
+    <h2> Settings</h2>
+    <button onclick="diff(0.8)">Easy</button>
+    <button onclick="diff(0.6)">Normal</button>
+    <button onclick="diff(0.4)">Hard</button>
+    <button onclick="diff(0.001)">Extreme</button>
+    </div>
+
 </body>
 
 </html>
