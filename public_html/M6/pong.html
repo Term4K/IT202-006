@@ -35,6 +35,8 @@
         // Keep track of the score
         var leftScore = 0;
         var rightScore = 0;
+
+        /* pn253 2/23/22 Function to change the difficulty based on visibility percentage of bot. Also sets mode for later. */
         function diff(x){
             if(x == 0.001){
                 mode = "Extreme";
@@ -212,6 +214,8 @@
         function checkScore() {
             // Score if the ball goes past a paddle
             //left side of ball passes left side of paddle
+            /* pn253 3/23/22 Code below adds to the score based on the speed of the ball.
+               speed is calulated using trig and then floored to keep it an int */
             if (ball.x < leftPaddle.x) {
                 rightScore += Math.floor(Math.sqrt(Math.pow(ball.sX, 2) + Math.pow(ball.sY, 2)));
                 resetBall();
@@ -230,8 +234,10 @@
             let offsetY = canvas.height * .05;
             let offsetX = canvas.width * .01;
             context.fillText('Score: ' + leftScore, offsetX, offsetY);
+            /* pn253 3/23/22 Prints the mode of the game to center of the canvas between the scores. */
             context.textAlign = 'center';
             context.fillText(mode + ' Mode', canvas.height * .5, offsetY);
+
             context.textAlign = 'right';
             context.fillText('Score: ' + rightScore, canvas.width - offsetX, offsetY);
         }
@@ -281,6 +287,7 @@
 
     </div>
     <div>
+    <!-- pn253 3/23/22 Buttons added to change the difficulty on click. -->
     <h2> Settings</h2>
     <button onclick="diff(0.8)">Easy</button>
     <button onclick="diff(0.6)">Normal</button>
