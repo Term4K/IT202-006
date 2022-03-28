@@ -13,11 +13,22 @@
 .alert-info {
     background-color: teal;
 }
-/* nav li{display: inline; background-color: rebeccapurple;}
-nav li a{color: hotpink}
-input{border-radius: 50%;}
-body{
-    background-color: hotpink;
-    color: rgb(153, 0, 153);
+nav ul{
+    background-color: rgb(49, 49, 49);
+    padding: 14px 16px;
+}
+nav li{display: inline-block; background-color: rgb(49, 49, 49);}
+nav li a{
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+}
+nav li a:hover{
+    background-color: grey;
+}
 
-} */
+body{
+    background-color: grey;
+    color: white;
+
+}
