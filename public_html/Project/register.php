@@ -24,9 +24,22 @@ reset_session();
 <script>
     function validate(form) {
         //TODO 1: implement JavaScript validation
-        //ensure it returns false for an error and true for success
-
-        return true;
+        let pw = form.password.value;
+        let con = form.confirm.value;
+        let isValid = true;
+        let user = form.username.value;
+        //TODO add other client side validation....
+        if(!user.match(/^[a-z0-9_-]{3,16}$/)){
+            flash("Username is not valid", "warning");
+            isValid = false;
+        }
+        //example of using flash via javascript
+        //find the flash container, create a new element, appendChild
+        if (pw !== con) {
+            flash("Password and Confrim password must match", "warning");
+            isValid = false;
+        }
+        return isValid;
     }
 </script>
 <?php
