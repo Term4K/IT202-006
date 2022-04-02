@@ -16,10 +16,24 @@ require(__DIR__ . "/../../partials/nav.php");
     function validate(form) {
         //TODO 1: implement JavaScript validation
         //ensure it returns false for an error and true for success
-
+        let user = form.email.value;
+        let isValid = true;
+        if(user.includes('@')){
+            isValid = user.match(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+            if(!isValid){
+                flash("Email is not valid", "warning");
+                isValid = false;
+            }
+        } else {
+            isValid = user.match(/^[a-z0-9_-]{3,16}$/);
+            if(!isValid){
+                flash("Username is not valid", "warning");
+                isValid = false;
+            }
+        }
         //TODO update clientside validation to check if it should
         //valid email or username
-        return true;
+        return isValid;
     }
 </script>
 <?php
