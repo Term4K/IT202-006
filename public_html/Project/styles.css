@@ -1,0 +1,34 @@
+.alert-success {
+    background-color: green
+}
+
+.alert-warning {
+    background-color: black;
+}
+
+.alert-danger {
+    background-color: red;
+}
+
+.alert-info {
+    background-color: teal;
+}
+nav ul{
+    background-color: rgb(49, 49, 49);
+    padding: 14px 16px;
+}
+nav li{display: inline-block; background-color: rgb(49, 49, 49);}
+nav li a{
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+}
+nav li a:hover{
+    background-color: grey;
+}
+
+body{
+    background-color: grey;
+    color: white;
+
+}
