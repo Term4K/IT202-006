@@ -1,6 +1,7 @@
 <?php
 
 /** Gets the top 10 scores for valid durations (day, week, month, lifetime) */
+/* pn253 04/17/22 using the get_top_10 function you can pick an interval and retrive top 10 scores from db*/
 function get_top_10($duration = "day")
 {
     $d = "day";
@@ -29,6 +30,7 @@ function get_top_10($duration = "day")
         AND
         Scores.created <= addtime(LAST_DAY(CURDATE()), '23:59:59')";
     }
+    /* pn253 04/17/22 using the get_top_10 function you can pick an interval and retrive top 10 scores from db*/
     //remember to prefix any ambiguous columns (Users and Scores both have created, modified, and id columns)
     $query .= " ORDER BY score Desc, Scores.created desc LIMIT 10"; //newest of the same score is ranked higher
     error_log("get top 10 query: $query");

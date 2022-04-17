@@ -2,6 +2,12 @@
 require(__DIR__ . "/../../partials/nav.php");
 ?>
 <h1>Home</h1>
+<div>
+        <?php
+        $duration = "week";
+        require(__DIR__ . "/../../partials/scores_table.php");
+        ?>
+</div>
 <?php
 
 // if (is_logged_in(true)) {
