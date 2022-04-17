@@ -41,6 +41,14 @@ require(__DIR__ . "/../../partials/nav.php");
             }
         }
 
+        function saveGame() {
+            flash("Game Saved!", "success");
+        }
+
+        function loadGame() {
+            flash("Game Loaded!", "success");
+        }
+
         function isClicked(mouseEvent) {
             clickX = mouseEvent.pageX - this.offsetLeft;
             clickY = mouseEvent.pageY - this.offsetTop;
@@ -72,6 +80,9 @@ require(__DIR__ . "/../../partials/nav.php");
             context.fillText("Cookies: " + clicks, 5, 568);
         }
     </script>
+    <?php
+    require_once(__DIR__ . "/../../partials/flash.php");
+    ?>
     <style>
         canvas:focus{
             border: 3px solid black;
@@ -95,15 +106,14 @@ require(__DIR__ . "/../../partials/nav.php");
     <div>
 
     </div>
+    <?php if (is_logged_in()) : ?>
     <div style="margin-left: 60px;">
     <!-- pn253 3/23/22 Buttons added to change the difficulty on click. -->
-    <h2> Settings</h2>
-    <button onclick="diff(0.8)">Easy</button>
-    <button onclick="diff(0.6)">Normal</button>
-    <button onclick="diff(0.4)">Hard</button>
-    <button onclick="diff(0.001)">Extreme</button>
+        <h2> Save/Load Game</h2>
+        <button onclick="saveGame()">Save Game</button>
+        <button onclick="loadGame()">Load Game</button>
     </div>
-
+    <?php endif; ?>
 </body>
 
 </html>
