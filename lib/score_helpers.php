@@ -13,26 +13,27 @@ function get_top_10($duration = "day")
         $d = $duration;
     }
     $db = getDB();
-    $query = "SELECT user_id,username, score, prest, Scores.created from Scores join Users on Scores.user_id = Users.id";
+    //edited out user_id, and prest, to remove that from the tables on homepage
+    $query = "SELECT username, score, Scores.modified from Scores join Users on Scores.user_id = Users.id";
     if ($d === "day") {
 
-        $query .= " WHERE Scores.created >= addtime(CURDATE(), '00:00:00') AND Scores.created <= addtime(CURDATE(), '23:59:59')";
+        $query .= " WHERE Scores.modified >= addtime(CURDATE(), '00:00:00') AND Scores.modified <= addtime(CURDATE(), '23:59:59')";
     } else if ($d === "week") {
         //https://stackoverflow.com/a/42540446
         $query .= " WHERE 
-        Scores.created >= addtime(date_add(curdate(), interval  -WEEKDAY(curdate()) day), '00:00:00')
+        Scores.modified >= addtime(date_add(curdate(), interval  -WEEKDAY(curdate()) day), '00:00:00')
         AND
-        Scores.created <= addtime(date_add(date_add(curdate(), interval  -WEEKDAY(curdate())-1 day), interval 7 day), '23:59:59')";
+        Scores.modified <= addtime(date_add(date_add(curdate(), interval  -WEEKDAY(curdate())-1 day), interval 7 day), '23:59:59')";
     } else if ($d === "month") {
         //https://www.mysqltutorial.org/mysql-last_day/
         $query .= " WHERE 
-        Scores.created >=  addtime(dATE_SUB(curdate(),INTERVAL DAYOFMONTH(curdate())-1 DAY), '00:00:00')
+        Scores.modified >=  addtime(dATE_SUB(curdate(),INTERVAL DAYOFMONTH(curdate())-1 DAY), '00:00:00')
         AND
-        Scores.created <= addtime(LAST_DAY(CURDATE()), '23:59:59')";
+        Scores.modified <= addtime(LAST_DAY(CURDATE()), '23:59:59')";
     }
     /* pn253 04/17/22 using the get_top_10 function you can pick an interval and retrive top 10 scores from db*/
     //remember to prefix any ambiguous columns (Users and Scores both have created, modified, and id columns)
-    $query .= " ORDER BY score Desc, Scores.created desc LIMIT 10"; //newest of the same score is ranked higher
+    $query .= " ORDER BY score Desc, Scores.modified desc LIMIT 10"; //newest of the same score is ranked higher
     error_log("get top 10 query: $query");
     $stmt = $db->prepare($query);
     $results = [];
@@ -73,7 +74,7 @@ function get_latest_scores($user_id, $limit = 10)
     if ($limit < 1 || $limit > 50) {
         $limit = 10;
     }
-    $query = "SELECT score, prest, created from Scores where user_id = :id ORDER BY created desc LIMIT :limit";
+    $query = "SELECT score, prest, modified from Scores where user_id = :id ORDER BY modified desc LIMIT :limit";
     $db = getDB();
     //IMPORTANT: this is required for the execute to set the limit variables properly
     //otherwise it'll convert the values to a string and the query will fail since LIMIT expects only numerical values and doesn't cast
