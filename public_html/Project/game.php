@@ -17,6 +17,7 @@ require(__DIR__ . "/../../partials/nav.php");
         var clickX;
         var clickY;
         var clicks;
+        var prestige = 0;
 
         function init() {
             canvas = document.getElementById("board");
@@ -42,7 +43,17 @@ require(__DIR__ . "/../../partials/nav.php");
         }
 
         function saveGame() {
-            flash("Game Saved!", "success");
+            postData({
+                score: clicks,
+                prest: prestige,
+            }, "/Project/api/save_scores.php").then(data => {
+                console.log(data);
+                if(data.status === 200){
+                    flash(data.message, "success");
+                } else {
+                    flash(data.message, "warning");
+                }
+            })
         }
 
         function loadGame() {
