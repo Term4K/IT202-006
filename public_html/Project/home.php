@@ -2,7 +2,8 @@
 require(__DIR__ . "/../../partials/nav.php");
 ?>
 <h1>Fantastic Cookie Clicker Homepage</h1>
-<h5>A simple cookie clicker which has a optional shop items to increase score</h5>
+<h5>A simple cookie clicker which has a optional shop items to increase score. </h5>
+<h5>The objective is to collect as many cookies as possible</h5>
 <div style="margin-top:30px; margin-bottom: 25px;">
         <?php
         $duration = "week";
