@@ -51,10 +51,10 @@
     - [ ] \(mm/dd/yyyy) The system will save the user’s score at the end of the game only if the user is logged in
         -  Link to related .md file: [md File](Link) 
         -  Link to related file: [Prod File](https://pn253-prod.herokuapp.com/Project/game.php)
-    - [ ] \(mm/dd/yyyy) The user will be able to see their last 10 scores
+    - [X] \(04/17/2022) The user will be able to see their last 10 scores
         -  Link to related .md file: [md File](Link) 
         -  Link to related file: [Prod File](https://pn253-prod.herokuapp.com/Project/profile.php)
-    - [ ] \(mm/dd/yyyy) Create function(s) that output the following scoreboards
+    - [X] \(04/17/2022) Create function(s) that output the following scoreboards
         -  Link to related .md file: [md File](Link) 
         -  Link to related file: [Prod File](https://pn253-prod.herokuapp.com/Project/home.php)
     - [ ] \(mm/dd/yyyy) Create a Homepage (index.php)
