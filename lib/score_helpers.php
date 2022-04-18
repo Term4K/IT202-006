@@ -13,7 +13,8 @@ function get_top_10($duration = "day")
         $d = $duration;
     }
     $db = getDB();
-    $query = "SELECT user_id,username, score, prest, Scores.created from Scores join Users on Scores.user_id = Users.id";
+    //edited out user_id, and prest, to remove that from the tables on homepage
+    $query = "SELECT username, score, Scores.created from Scores join Users on Scores.user_id = Users.id";
     if ($d === "day") {
 
         $query .= " WHERE Scores.created >= addtime(CURDATE(), '00:00:00') AND Scores.created <= addtime(CURDATE(), '23:59:59')";

@@ -50,7 +50,7 @@ switch ($duration) {
                         <?php if ($index == 0) : ?>
                             <thead>
                                 <?php foreach ($record as $column => $value) : ?>
-                                    <th><?php se($column); ?></th>
+                                    <th><?php $column = ucfirst($column); if($column != "Created") se($column); else se("Date") ?></th>
                                 <?php endforeach; ?>
                             </thead>
                         <?php endif; ?>

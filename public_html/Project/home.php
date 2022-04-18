@@ -1,10 +1,22 @@
 <?php
 require(__DIR__ . "/../../partials/nav.php");
 ?>
-<h1>Home</h1>
+<h1>Fantastic Cookie Clicker Homepage</h1>
 <div>
         <?php
         $duration = "week";
+        require(__DIR__ . "/../../partials/scores_table.php");
+        ?>
+</div>
+<div>
+        <?php
+        $duration = "month";
+        require(__DIR__ . "/../../partials/scores_table.php");
+        ?>
+</div>
+<div>
+        <?php
+        $duration = "lifetime";
         require(__DIR__ . "/../../partials/scores_table.php");
         ?>
 </div>
