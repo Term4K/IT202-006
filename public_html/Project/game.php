@@ -17,6 +17,7 @@ require(__DIR__ . "/../../partials/nav.php");
         var clickX;
         var clickY;
         var clicks;
+        var prestige = 0;
 
         function init() {
             canvas = document.getElementById("board");
@@ -39,6 +40,24 @@ require(__DIR__ . "/../../partials/nav.php");
                 previousFrame = Date.now();
                 setInterval(gameLoop, 1000/60);
             }
+        }
+
+        function saveGame() {
+            postData({
+                score: clicks,
+                prest: prestige,
+            }, "/Project/api/save_scores.php").then(data => {
+                console.log(data);
+                if(data.status === 200){
+                    flash(data.message, "success");
+                } else {
+                    flash(data.message, "warning");
+                }
+            })
+        }
+
+        function loadGame() {
+            flash("Game Loaded!", "success");
         }
 
         function isClicked(mouseEvent) {
@@ -72,6 +91,9 @@ require(__DIR__ . "/../../partials/nav.php");
             context.fillText("Cookies: " + clicks, 5, 568);
         }
     </script>
+    <?php
+    require_once(__DIR__ . "/../../partials/flash.php");
+    ?>
     <style>
         canvas:focus{
             border: 3px solid black;
@@ -97,13 +119,10 @@ require(__DIR__ . "/../../partials/nav.php");
     </div>
     <div style="margin-left: 60px;">
     <!-- pn253 3/23/22 Buttons added to change the difficulty on click. -->
-    <h2> Settings</h2>
-    <button onclick="diff(0.8)">Easy</button>
-    <button onclick="diff(0.6)">Normal</button>
-    <button onclick="diff(0.4)">Hard</button>
-    <button onclick="diff(0.001)">Extreme</button>
+        <h2> Save/Load Game</h2>
+        <button onclick="saveGame()">Save Game</button>
+        <button onclick="loadGame()">Load Game</button>
     </div>
-
 </body>
 
 </html>
