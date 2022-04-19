@@ -117,14 +117,12 @@ require(__DIR__ . "/../../partials/nav.php");
     <div>
 
     </div>
-    <?php if (is_logged_in()) : ?>
     <div style="margin-left: 60px;">
     <!-- pn253 3/23/22 Buttons added to change the difficulty on click. -->
         <h2> Save/Load Game</h2>
         <button onclick="saveGame()">Save Game</button>
         <button onclick="loadGame()">Load Game</button>
     </div>
-    <?php endif; ?>
 </body>
 
 </html>
