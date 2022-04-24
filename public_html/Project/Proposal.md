@@ -61,7 +61,33 @@
         -  Link to related .md file: [md File](https://github.com/Term4K/IT202-006/blob/Milestone2/public_html/Project/milestone2.md)
         -  Link to related file: [Prod File](https://pn253-prod.herokuapp.com/Project/home.php) 
 - Milestone 3
-  - (duplicate template here for Milestone 1 features)
+    - [ ] \(04/dd/2022) Users will have credits associated with their account
+        -  Link to related .md file: [md File](Link)
+        -  Link to related file: [Prod File](Link)
+    - [ ] \(04/dd/2022) Create a CreditsHistory table (id, user_id, credit_diff, reason, created)
+        -  Link to related .md file: [md File](Link)
+        -  Link to related file: [Prod File](Link)
+    - [ ] \(04/dd/2022) Competitions table should have the following columns (id, name, duration, expires (value = now + duration), current_reward, starting_reward, join_fee, current_participants, min_participants, paid_out (boolean default false), did_calc (boolean default false), min_score, first_place_per, second_place_per, third_place_per, cost_to_create, created_by (user_id ref), created, modified)
+        -  Link to related .md file: [md File](Link)
+        -  Link to related file: [Prod File](Link)
+    - [ ] \(04/dd/2022) User will be able to create a competition
+        -  Link to related .md file: [md File](Link)
+        -  Link to related file: [Prod File](Link)
+    - [ ] \(04/dd/2022) Each new participant causes the Reward value to increase by 50% of the joining fee rounded up (i.e., at least 1)
+        -  Link to related .md file: [md File](Link)
+        -  Link to related file: [Prod File](Link)
+    - [ ] \(04/dd/2022) Have a page where the User can see active competitions (not expired)
+        -  Link to related .md file: [md File](Link)
+        -  Link to related file: [Prod File](Link)
+    - [ ] \(04/dd/2022) Will need an association table CompetitionParticipants (id, comp_id, user_id, created, modified)
+        -  Link to related .md file: [md File](Link)
+        -  Link to related file: [Prod File](Link)
+    - [ ] \(04/dd/2022) User can join active competitions
+        -  Link to related .md file: [md File](Link)
+        -  Link to related file: [Prod File](Link)
+    - [ ] \(04/dd/2022) Create function that calculates competition winners (clearly comment each step in the code)
+        -  Link to related .md file: [md File](Link)
+        -  Link to related file: [Prod File](Link)
 - Milestone 4
   - (duplicate template here for Milestone 1 features)
   - 
