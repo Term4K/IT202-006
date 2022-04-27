@@ -6,8 +6,13 @@ function refresh_credit_balance(){
         $db = getDB();
         $stmt = $db->prepare($query);
         try{
-            $stmt->execute(["uid" => get_user_id()]);
-
+            $stmt->execute([":uid" => get_user_id()]);
+            $stmt = $db->prepare("SELECT id, email, username, password, credits from Users where id = :uid");
+            $r = $stmt->execute([":uid" => get_user_id()]);
+            if($r){
+                $user = $stmt->fetch(PDO::FETCH_ASSOC);
+                $_SESSION["user"] = $user;
+            }
         } catch (PDOException $e) {
             error_log(var_export($e->errorInfo, true));
             flash("Error refreshing credit balance", "danger");

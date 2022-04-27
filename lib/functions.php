@@ -26,4 +26,6 @@ require(__DIR__ . "/get_url.php");
 require(__DIR__ . "/score_helpers.php");
 
 require(__DIR__ . "/transfer_credits.php");
+
+require(__DIR__ . "/refresh_credit_balance.php");
 ?>

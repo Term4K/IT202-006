@@ -7,8 +7,10 @@ function transfer_credits($credits, $reason){
         $stmt = $db->prepare($query);
         try{
             $stmt->execute([":uid" => get_user_id(), ":cred" => $credits, ":r" => $reason]);
-
             refresh_credit_balance();
+            $cookies = $credits * 100;
+            $stmt = $db->prepare("UPDATE Scores SET score = score - :s WHERE user_id = :uid");
+            $stmt->execute([":s" => $cookies, ":uid" => get_user_id()]);
             return true;
         } catch (PDOException $e) {
             error_log(var_export($e->errorInfo, true));
