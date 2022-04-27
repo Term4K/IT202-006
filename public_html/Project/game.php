@@ -18,6 +18,8 @@ require(__DIR__ . "/../../partials/nav.php");
         var clickY;
         var clicks;
         var prestige = 0;
+        var saved = false;
+        var savedScore = 0;
 
         function init() {
             canvas = document.getElementById("board");
@@ -43,17 +45,37 @@ require(__DIR__ . "/../../partials/nav.php");
         }
 
         function saveGame() {
-            postData({
-                score: clicks,
-                prest: prestige,
-            }, "/Project/api/save_scores.php").then(data => {
-                console.log(data);
-                if(data.status === 200){
-                    flash(data.message, "success");
-                } else {
-                    flash(data.message, "warning");
+            if(saved){
+                    postData({
+                    score: clicks,
+                    prest: prestige,
+                }, "/Project/api/save_scores.php").then(data => {
+                    console.log(data);
+                    if(data.status === 200){
+                        flash(data.message, "success");
+                    } else {
+                        flash(data.message, "warning");
+                    }
+                })
+                savedScore = clicks;
+            } else {
+                if((clicks - savedScore) == 0){
+                    flash("Score not saved due to no change in score", "warning");
+                    return;
                 }
-            })
+                postData({
+                    score: clicks - savedScore,
+                    prest: prestige,
+                }, "/Project/api/save_scores.php").then(data => {
+                    console.log(data);
+                    if(data.status === 200){
+                        flash(data.message, "success");
+                    } else {
+                        flash(data.message, "warning");
+                    }
+                })
+                savedScore = clicks;
+            }
         }
 
         function loadGame() {

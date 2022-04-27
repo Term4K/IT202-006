@@ -22,7 +22,7 @@ function save_score($score, $prest, $echo = true)
     if (is_logged_in()) {
         //todo save
         $db = getDB();
-        $stmt = $db->prepare("INSERT INTO Scores(score, prest, user_id) VALUES (:s, :p, :uid) ON DUPLICATE KEY UPDATE score = :s, prest = :p");
+        $stmt = $db->prepare("INSERT INTO Scores(score, prest, user_id) VALUES (:s, :p, :uid) ON DUPLICATE KEY UPDATE score = score + :s, prest = :p");
         try {
             $stmt->execute([":s" => $score, ":p" => $prest, ":uid" => get_user_id()]);
             $response["status"] = 200;

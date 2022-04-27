@@ -62,6 +62,11 @@ session_start();
                     <li class="nav-item"><a class="nav-link text-light" href="<?php echo get_url('logout.php'); ?>">Logout</a></li>
                 <?php endif; ?>
             </ul>
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <?php if (is_logged_in()) : ?>
+                    <span class="navbar-text text-light"> Credits: <?php echo get_credits(); ?></span>
+                <?php endif; ?>
+            </ul>
         </div>
     </div>
 </nav>
