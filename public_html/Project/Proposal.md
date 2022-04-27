@@ -61,10 +61,10 @@
         -  Link to related .md file: [md File](https://github.com/Term4K/IT202-006/blob/Milestone2/public_html/Project/milestone2.md)
         -  Link to related file: [Prod File](https://pn253-prod.herokuapp.com/Project/home.php) 
 - Milestone 3
-    - [ ] \(04/dd/2022) Users will have credits associated with their account
+    - [X] \(04/27/2022) Users will have credits associated with their account
         -  Link to related .md file: [md File](Link)
         -  Link to related file: [Prod File](Link)
-    - [ ] \(04/dd/2022) Create a CreditsHistory table (id, user_id, credit_diff, reason, created)
+    - [X] \(04/27/2022) Create a CreditsHistory table (id, user_id, credit_diff, reason, created)
         -  Link to related .md file: [md File](Link)
         -  Link to related file: [Prod File](Link)
     - [ ] \(04/dd/2022) Competitions table should have the following columns (id, name, duration, expires (value = now + duration), current_reward, starting_reward, join_fee, current_participants, min_participants, paid_out (boolean default false), did_calc (boolean default false), min_score, first_place_per, second_place_per, third_place_per, cost_to_create, created_by (user_id ref), created, modified)
