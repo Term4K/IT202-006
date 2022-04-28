@@ -10,7 +10,7 @@ if (isset($_POST["credits"])) {
     if(transfer_credits($credits, "conversion")){
         flash("Converted Credits Succesfully", "success");
     }
-   // header("Refresh:0");
+
 }
 ?>
 
