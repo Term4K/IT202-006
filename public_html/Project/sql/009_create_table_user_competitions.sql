@@ -19,8 +19,6 @@ CREATE TABLE IF NOT EXISTS Comps(
     created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     modified TIMESTAMP DEFAULT CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
     FOREIGN KEY(created_by) REFERENCES Users(id),
-    FOREIGN KEY(first_place_per) REFERENCES Users(id),
-    FOREIGN KEY(second_place_per) REFERENCES Users(id),
     check (min_score >= 1),
     check (starting_reward >= 1),
     check (current_reward >= starting_reward),
