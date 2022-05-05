@@ -28,4 +28,8 @@ require(__DIR__ . "/score_helpers.php");
 require(__DIR__ . "/transfer_credits.php");
 
 require(__DIR__ . "/refresh_credit_balance.php");
+
+require(__DIR__ . "/add_to_comp.php");
+
+require(__DIR__ . "/save_data.php");
 ?>
