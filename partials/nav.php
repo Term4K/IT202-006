@@ -61,6 +61,17 @@ session_start();
                     </li>
                 <?php endif; ?>
                 <?php if (is_logged_in()) : ?>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-light" href="#" id="rolesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Competitions
+                        </a>
+                        <ul class="dropdown-menu bg-dark" aria-labelledby="rolesDropdown">
+                            <li><a class="dropdown-item text-light" href="<?php echo get_url('create_competition.php'); ?>">Create</a></li>
+                            <li><a class="dropdown-item text-light" href="<?php echo get_url('list_competition.php'); ?>">View</a></li>
+                        </ul>
+                    </li>
+                <?php endif; ?>
+                <?php if (is_logged_in()) : ?>
                     <li class="nav-item"><a class="nav-link text-light" href="<?php echo get_url('logout.php'); ?>">Logout</a></li>
                 <?php endif; ?>
             </ul>
