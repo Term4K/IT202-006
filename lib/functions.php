@@ -32,4 +32,8 @@ require(__DIR__ . "/refresh_credit_balance.php");
 require(__DIR__ . "/add_to_comp.php");
 
 require(__DIR__ . "/save_data.php");
+
+require(__DIR__ . "/paginate.php");
+
+require(__DIR__ . "/join_competition.php");
 ?>

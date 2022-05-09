@@ -67,7 +67,7 @@ session_start();
                         </a>
                         <ul class="dropdown-menu bg-dark" aria-labelledby="rolesDropdown">
                             <li><a class="dropdown-item text-light" href="<?php echo get_url('create_competition.php'); ?>">Create</a></li>
-                            <li><a class="dropdown-item text-light" href="<?php echo get_url('list_competition.php'); ?>">View</a></li>
+                            <li><a class="dropdown-item text-light" href="<?php echo get_url('list_competitions.php'); ?>">View</a></li>
                         </ul>
                     </li>
                 <?php endif; ?>
