@@ -1,5 +1,6 @@
 <?php
 
+//pn253 05/09/22 gets the credits from creditHistory and also sets the cookie value to be the correct amount of credits. 
 function refresh_credit_balance(){
     if(is_logged_in()){
         $query = "UPDATE Users set credits = (SELECT IFNULL(SUM(credit_diff), 0) from CreditsHistory WHERE user_id = :uid) where id = :uid";

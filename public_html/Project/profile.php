@@ -92,6 +92,7 @@ if (isset($_POST["save"])) {
 <?php
 $email = get_user_email();
 $username = get_username();
+refresh_credit_balance();
 ?>
 <div class="container-fluid">
     <h1>Profile</h1>

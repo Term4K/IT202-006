@@ -59,7 +59,7 @@ if (isset($_POST["title"]) && !empty($_POST["title"])) {
         </div>
         <div class="mb-3">
             <label for="reward" class="form-label">Starting Reward</label>
-            <input id="reward" type="number" name="starting_reward" class="form-control" onchange="updateCost()" placeholder=">= 1" min="1" />
+            <input id="starting_reward" type="number" name="starting_reward" class="form-control" onchange="updateCost()" placeholder=">= 1" min="1" />
         </div>
         <div class="mb-3">
             <label for="ms" class="form-label">Min. Score</label>
@@ -112,7 +112,7 @@ if (isset($_POST["title"]) && !empty($_POST["title"])) {
         return isValid;
     }
         function updateCost() {
-            let starting = parseInt(document.getElementById("reward").value || 0) + 1;
+            let starting = parseInt(document.getElementById("starting_reward").value || 0) + 1;
             let join = parseInt(document.getElementById("jc").value || 0);
             if (join < 0) {
                 join = 1;
