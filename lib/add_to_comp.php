@@ -17,6 +17,7 @@ function update_participants($comp_id)
 function add_to_competition($comp_id, $user_id)
 {
     $db = getDB();
+    $score = get_best_score($user_id);
     $stmt = $db->prepare("INSERT INTO UserComps (user_id, comp_id) VALUES (:uid, :cid)");
     try {
         $stmt->execute([":uid" => $user_id, ":cid" => $comp_id]);
