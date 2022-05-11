@@ -85,7 +85,7 @@
     - [X] \(05/09/2022) User can join active competitions
         -  Link to related .md file: [md File](Link)
         -  Link to related file: [Prod File](Link)
-    - [ ] \(04/dd/2022) Create function that calculates competition winners (clearly comment each step in the code)
+    - [X] \(05/11/2022) Create function that calculates competition winners (clearly comment each step in the code)
         -  Link to related .md file: [md File](Link)
         -  Link to related file: [Prod File](Link)
 - Milestone 4
