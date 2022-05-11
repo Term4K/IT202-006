@@ -1,7 +1,7 @@
 <?php
 function join_competition($comp_id, $user_id, $cost)
 {
-    refresh_credit_balance();
+    refresh_credit_balance(get_user_id());
     $balance = get_credits();
     if ($comp_id > 0) {
         if ($balance >= $cost) {
@@ -19,7 +19,7 @@ function join_competition($comp_id, $user_id, $cost)
                                 flash("Successfully joined", "success");
                             }
                         } else {
-                            flash("Failed to pay for competition $cost", "danger");
+                            flash("Failed to pay for competition", "danger");
                         }
                     } else {
                         flash("You can't afford to join this competition", "warning");

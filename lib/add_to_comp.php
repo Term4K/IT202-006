@@ -3,6 +3,7 @@
 function update_participants($comp_id)
 {
     $db = getDB();
+    //pn253 5/10/22 logic to update the score plus the 50% of join fee
     $stmt = $db->prepare("UPDATE Comps set current_participants = (SELECT IFNULL(COUNT(1),0) FROM UserComps WHERE comp_id = :cid), 
     current_reward = IF(join_fee > 0, current_reward + CEILING(join_fee * 0.5), current_reward) WHERE id = :cid");
     try {
