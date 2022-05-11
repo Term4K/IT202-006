@@ -94,3 +94,25 @@ function get_latest_scores($user_id, $limit = 10)
     }
     return [];
 }
+
+function get_top_scores_for_comp($comp_id, $limit = 3){
+    $query = "SELECT UserComps.user_id, (start_score - score) as final_score from UserComps
+     JOIN Scores on Scores.user_id = UserComps.user_id
+     where comp_id = :id ORDER BY final_score desc LIMIT :limit";
+    $db = getDB();
+
+    $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+
+    $stmt = $db->prepare($query);
+    try {
+        $stmt->execute([":id" => $comp_id, ":limit" => $limit]);
+        $r = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        if ($r) {
+            return $r;
+        }
+    } catch (PDOException $e) {
+        error_log("Error getting latest $limit scores for user $comp_id: " . var_export($e->errorInfo, true));
+        flash("Error getting top scores for competition", "danger");
+    }
+    return [];
+}

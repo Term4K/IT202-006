@@ -39,7 +39,9 @@ session_start();
         <div class="collapse navbar-collapse" id="navContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <?php if (is_logged_in()) : ?>
-
+                    <li class="nav-item"><a class="nav-link text-light" href="<?php echo get_url('conversion.php'); ?>">Cookies-to-Credits</a></li>
+                <?php endif; ?>
+                <?php if (is_logged_in()) : ?>
                     <li class="nav-item"><a class="nav-link text-light" href="<?php echo get_url('profile.php'); ?>">Profile</a></li>
                 <?php endif; ?>
                 <?php if (!is_logged_in()) : ?>
@@ -55,11 +57,28 @@ session_start();
                             <li><a class="dropdown-item text-light" href="<?php echo get_url('admin/create_role.php'); ?>">Create</a></li>
                             <li><a class="dropdown-item text-light" href="<?php echo get_url('admin/list_roles.php'); ?>">List</a></li>
                             <li><a class="dropdown-item text-light" href="<?php echo get_url('admin/assign_roles.php'); ?>">Assign</a></li>
+                            <li><a class="dropdown-item text-light" href="<?php echo get_url('admin/admin_calc.php'); ?>">Winner Calculation</a></li>
+                        </ul>
+                    </li>
+                <?php endif; ?>
+                <?php if (is_logged_in()) : ?>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-light" href="#" id="rolesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Competitions
+                        </a>
+                        <ul class="dropdown-menu bg-dark" aria-labelledby="rolesDropdown">
+                            <li><a class="dropdown-item text-light" href="<?php echo get_url('create_competition.php'); ?>">Create</a></li>
+                            <li><a class="dropdown-item text-light" href="<?php echo get_url('list_competitions.php'); ?>">View</a></li>
                         </ul>
                     </li>
                 <?php endif; ?>
                 <?php if (is_logged_in()) : ?>
                     <li class="nav-item"><a class="nav-link text-light" href="<?php echo get_url('logout.php'); ?>">Logout</a></li>
+                <?php endif; ?>
+            </ul>
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <?php if (is_logged_in()) : ?>
+                    <span class="navbar-text text-light"> Credits: <?php echo get_credits(); ?></span>
                 <?php endif; ?>
             </ul>
         </div>
