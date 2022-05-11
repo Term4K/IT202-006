@@ -1,0 +1,1 @@
+ALTER TABLE CreditsHistory MODIFY COLUMN reason varchar(150) NOT NULL;

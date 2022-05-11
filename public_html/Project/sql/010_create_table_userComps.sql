@@ -1,11 +1,10 @@
-CREATE TABLE IF NOT EXISTS Scores(
+CREATE TABLE IF NOT EXISTS UserComps(
     id int AUTO_INCREMENT PRIMARY KEY,
-    score int DEFAULT 0,
-    prest int DEFAULT 0,
-    user_id int UNIQUE,
+    user_id int,
+    comp_id int,
     created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     modified TIMESTAMP DEFAULT CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
+    unique key(user_id, comp_id),
     FOREIGN KEY (user_id) REFERENCES Users(id),
-    check (score >= 0),
-    check (prest >= 0)
+    FOREIGN KEY (comp_id) REFERENCES Comps(id)
 )
