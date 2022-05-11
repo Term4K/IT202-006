@@ -36,4 +36,6 @@ require(__DIR__ . "/save_data.php");
 require(__DIR__ . "/paginate.php");
 
 require(__DIR__ . "/join_competition.php");
+
+require(__DIR__ . "/winner_calc.php");
 ?>

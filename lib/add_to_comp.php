@@ -18,9 +18,9 @@ function add_to_competition($comp_id, $user_id)
 {
     $db = getDB();
     $score = get_best_score($user_id);
-    $stmt = $db->prepare("INSERT INTO UserComps (user_id, comp_id) VALUES (:uid, :cid)");
+    $stmt = $db->prepare("INSERT INTO UserComps (user_id, comp_id, start_score) VALUES (:uid, :cid, :ss)");
     try {
-        $stmt->execute([":uid" => $user_id, ":cid" => $comp_id]);
+        $stmt->execute([":uid" => $user_id, ":cid" => $comp_id, ":ss" => $score]);
         update_participants($comp_id);
         return true;
     } catch (PDOException $e) {
