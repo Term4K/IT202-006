@@ -32,7 +32,7 @@ function check_apply_disabled_next($page)
 }
 ?>
 
-<nav aria-label="Page navigation example I hope I get changed">
+<nav aria-label="Changed">
     <ul class="pagination justify-content-center">
         <li class="page-item <?php check_apply_disabled_prev(($page - 1)) ?>">
             <a class="page-link" href="?<?php se(persistQueryString($page - 1)); ?>" tabindex="-1">Previous</a>

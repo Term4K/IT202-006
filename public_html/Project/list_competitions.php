@@ -15,7 +15,7 @@ paginate("SELECT count(1) as total FROM Comps WHERE expires > current_timestamp(
 //handle page load
 
 $stmt = $db->prepare("SELECT Comps.id, title, min_participants, current_participants, current_reward, expires, created_by, min_score, join_fee, IF(comp_id is null, 0, 1) as joined,  CONCAT(first_place_per,'% - ', second_place_per, '% - ', third_place_per, '%') as place FROM Comps
-LEFT JOIN (SELECT * FROM UserComps WHERE user_id = :uid) as uc ON uc.comp_id = Comps.id WHERE expires > current_timestamp() AND paid_out < 1 AND did_calc < 1 ORDER BY expires asc");
+LEFT JOIN (SELECT * FROM UserComps WHERE user_id = :uid) as uc ON uc.comp_id = Comps.id WHERE expires > current_timestamp() AND paid_out < 1 AND did_calc < 1 ORDER BY expires asc LIMIT 10");
 $results = [];
 try {
     $stmt->execute([":uid" => get_user_id()]);
