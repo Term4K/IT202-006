@@ -197,6 +197,65 @@ if($isMe){
                 require(__DIR__ . "/../../partials/scores_table.php");
                 ?>
             </div>
+
+<?php 
+$per_page = 10;
+paginate("SELECT count(1) as total FROM Comps LEFT JOIN (SELECT * FROM UserComps WHERE user_id = :uid)as uc ON uc.comp_id = Comps.id WHERE comp_id is not null", [":uid" => $user_id]);
+
+$stmt = $db->prepare("SELECT Comps.id, title, min_participants, current_participants, current_reward, expires, created_by, join_fee, IF(comp_id is null, 0, 1) as joined, IF(expires < current_timestamp(), 'Expired', expires) as expireList,  CONCAT(first_place_per,'% - ', second_place_per, '% - ', third_place_per, '%') as place FROM Comps
+LEFT JOIN (SELECT * FROM UserComps WHERE user_id = :uid) as uc ON uc.comp_id = Comps.id WHERE comp_id is not null ORDER BY expires asc LIMIT :offset, :count");
+$results = [];
+$offset = ($page - 1) * $per_page;
+try {
+    $stmt->execute([":uid" => $user_id, ":offset" => $offset, ":count" => $per_page]);
+    $r = $stmt->fetchAll();
+    if ($r) {
+        $results = $r;
+    }
+} catch (PDOException $e) {
+    flash("There was a problem fetching competitions, please try again later", "danger");
+    error_log("List competitions error: " . var_export($e, true));
+}
+?>
+
+<div class="container-fluid">
+    <h1>List Competitions</h1>
+    <table class="table">
+        <thead>
+            <th>Title</th>
+            <th>Participants</th>
+            <th>Reward</th>
+            <th>Expires</th>
+            <th>Creator</th>
+            <th>Actions</th>
+        </thead>
+        <tbody>
+            <?php if (count($results) > 0) : ?>
+                <?php foreach ($results as $row) : ?>
+                    <tr>
+                        <td><?php se($row, "title"); ?></td>
+                        <td><?php se($row, "current_participants"); ?>/<?php se($row, "min_participants"); ?></td>
+                        <td><?php se($row, "current_reward"); ?><br>Payout: <?php se($row, "place", "-"); ?></td>
+                        <td><?php se($row, "expireList", "-"); ?></td>
+                        <?php if($row["created_by"] == $user_id) : ?>
+                            <td>Yes</td>
+                        <?php else : ?>
+                            <td>No</td>
+                        <?php endif; ?>
+                        <td>
+                            <a class="btn btn-secondary" href="view_competition.php?id=<?php se($row, 'id'); ?>">View</a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            <?php else : ?>
+                <tr>
+                    <td colspan="100%">No Competition History</td>
+                </tr>
+            <?php endif; ?>
+        </tbody>
+    </table>
+<?php include(__DIR__ . "/../../partials/pagination.php"); ?>
+</div>
         <?php else : ?>
             Profile is private
             <?php
