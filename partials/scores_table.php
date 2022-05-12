@@ -4,6 +4,9 @@
 if (!isset($duration)) {
     $duration = "day"; //choosing to default to day
 }
+if(!isset($competition_id)){
+    $competition_id = 1;
+}
 
 if (in_array($duration, ["day", "week", "month", "lifetime"])) {
     $results = get_top_10($duration);
@@ -12,6 +15,8 @@ if (in_array($duration, ["day", "week", "month", "lifetime"])) {
         $user_id = get_user_id();
     }
     $results = get_latest_scores($user_id);
+} else if ($duration === "competiton"){
+    $results = get_top_scores_for_comp(10);
 }
 switch ($duration) {
     case "day":
@@ -28,6 +33,9 @@ switch ($duration) {
         break;
     case "latest":
         $title = "Latest Scores";
+        break;
+    case "competiton":
+        $title = "Competition Scores";
         break;
     default:
         $title = "Invalid Scoreboard";
@@ -50,9 +58,12 @@ switch ($duration) {
                         <?php if ($index == 0) : ?>
                             <thead>
                                 <?php foreach ($record as $column => $value) : ?>
-                                    <?php if ($column != "user_id") : ?>
+                                    <?php if ($column != "user_id" && $column != "final_score") : ?>
                                         <th><?php $column = ucfirst($column); if($column != "Modified") se($column); else se("Date") ?></th>
                                     <?php else : ?>
+                                    <?php if ($column == "final_score") : ?>
+                                        <th><?php $column = "Score"; if($column != "Modified") se($column); else se("Date") ?></th> 
+                                    <?php endif; ?>
 
                                     <?php endif; ?>
                                 <?php endforeach; ?>
