@@ -14,7 +14,7 @@ function get_top_10($duration = "day")
     }
     $db = getDB();
     //edited out user_id, and prest, to remove that from the tables on homepage
-    $query = "SELECT username, score, Scores.modified from Scores join Users on Scores.user_id = Users.id";
+    $query = "SELECT username, score, user_id, Scores.modified from Scores join Users on Scores.user_id = Users.id";
     if ($d === "day") {
 
         $query .= " WHERE Scores.modified >= addtime(CURDATE(), '00:00:00') AND Scores.modified <= addtime(CURDATE(), '23:59:59')";
@@ -74,7 +74,7 @@ function get_latest_scores($user_id, $limit = 10)
     if ($limit < 1 || $limit > 50) {
         $limit = 10;
     }
-    $query = "SELECT score, prest, modified from Scores where user_id = :id ORDER BY modified desc LIMIT :limit";
+    $query = "SELECT score, prest, modified, user_id from Scores where user_id = :id ORDER BY modified desc LIMIT :limit";
     $db = getDB();
     //IMPORTANT: this is required for the execute to set the limit variables properly
     //otherwise it'll convert the values to a string and the query will fail since LIMIT expects only numerical values and doesn't cast

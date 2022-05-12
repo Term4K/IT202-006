@@ -50,13 +50,25 @@ switch ($duration) {
                         <?php if ($index == 0) : ?>
                             <thead>
                                 <?php foreach ($record as $column => $value) : ?>
-                                    <th><?php $column = ucfirst($column); if($column != "Created") se($column); else se("Date") ?></th>
+                                    <?php if ($column != "user_id") : ?>
+                                        <th><?php $column = ucfirst($column); if($column != "Modified") se($column); else se("Date") ?></th>
+                                    <?php else : ?>
+
+                                    <?php endif; ?>
                                 <?php endforeach; ?>
                             </thead>
                         <?php endif; ?>
                         <tr>
                             <?php foreach ($record as $column => $value) : ?>
-                                <td><?php se($value, null, "N/A"); ?></td>
+                                <?php if ($column == "username") : ?>
+                                    <?php 
+                                        $user_id = se($record, "user_id", 0, false);
+                                        $username = se($record, "username", "", false);
+                                    ?>
+                                    <td><a href="<?php echo get_url("profile.php?id=");se($user_id); ?>"><?php se($username); ?></a></td>
+                                <?php elseif ($column != "user_id") : ?>
+                                    <td><?php se($value, null, "N/A"); ?></td>
+                                <?php endif; ?>
                             <?php endforeach; ?>
                         </tr>
                     <?php endforeach; ?>
