@@ -96,7 +96,7 @@ function get_latest_scores($user_id, $limit = 10)
 }
 
 function get_top_scores_for_comp($comp_id, $limit = 3){
-    $query = "SELECT UserComps.user_id, username, (start_score - score) as final_score from UserComps
+    $query = "SELECT UserComps.user_id, username, (score - start_score) as final_score from UserComps
      JOIN Scores on Scores.user_id = UserComps.user_id LEFT JOIN Users on Users.id = UserComps.user_id
      where comp_id = :id ORDER BY final_score desc LIMIT :limit";
     $db = getDB();
