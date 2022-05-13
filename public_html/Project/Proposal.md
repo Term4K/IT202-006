@@ -89,8 +89,30 @@
         -  Link to related .md file: [md File](https://github.com/Term4K/IT202-006/blob/Milestone3/public_html/milestone3.md)
         -  Link to related file: [Prod File](https://pn253-prod.herokuapp.com/Project/admin/admin_calc.php)
 - Milestone 4
-  - (duplicate template here for Milestone 1 features)
-  - 
+    - [X] \(05/11/2022) User can set their profile to be public or private (will need another column in Users table)
+        -  Link to related .md file: [md File](https://github.com/Term4K/IT202-006/blob/Milestone4/public_html/Project/milestone4.md)
+        -  Link to related file: [Prod File](https://pn253-prod.herokuapp.com/Project/profile.php)
+    - [X] \(05/12/2022) User will be able to see their competition history
+        -  Link to related .md file: [md File](https://github.com/Term4K/IT202-006/blob/Milestone4/public_html/Project/milestone4.md)
+        -  Link to related file: [Prod File](https://pn253-prod.herokuapp.com/Project/profile.php)
+    - [ ] \(05/dd/2022) User with the role of “admin” can edit a competition where paid_out = false
+        -  Link to related .md file: [md File](https://github.com/Term4K/IT202-006/blob/Milestone4/public_html/Project/milestone4.md)
+        -  Link to related file: [Prod File](Link)
+    - [X] \(05/12/2022) Add pagination to the Active Competitions view
+        -  Link to related .md file: [md File](https://github.com/Term4K/IT202-006/blob/Milestone4/public_html/Project/milestone4.md)
+        -  Link to related file: [Prod File](https://pn253-prod.herokuapp.com/Project/list_competitions.php)
+    - [X] \(05/11/2022) Anywhere a username is displayed should link to that user’s profile
+        -  Link to related .md file: [md File](https://github.com/Term4K/IT202-006/blob/Milestone4/public_html/Project/milestone4.md)
+        -  Link to related file: [Prod File](https://pn253-prod.herokuapp.com/Project/home.php)
+    - [X] \(05/12/2022) Viewing an active or expired competition should show the top 10 scoreboard related to that competition
+        -  Link to related .md file: [md File](https://github.com/Term4K/IT202-006/blob/Milestone4/public_html/Project/milestone4.md)
+        -  Link to related file: [Prod File](https://pn253-prod.herokuapp.com/Project/view_competition.php?id=13)
+    - [X] \(05/12/2022) Game should be fully implemented/completed by this point
+        -  Link to related .md file: [md File](https://github.com/Term4K/IT202-006/blob/Milestone4/public_html/Project/milestone4.md)
+        -  Link to related file: [Prod File](https://pn253-prod.herokuapp.com/Project/game.php)
+    - [X] \(05/12/2022) User’s score history will include pagination
+        -  Link to related .md file: [md File](https://github.com/Term4K/IT202-006/blob/Milestone4/public_html/Project/milestone4.md)
+        -  Link to related file: [Prod File](https://pn253-prod.herokuapp.com/Project/profile.php)
 ### Intructions
 #### Don't delete this
 1. Pick one project type
