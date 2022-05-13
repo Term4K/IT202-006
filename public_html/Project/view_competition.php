@@ -69,7 +69,7 @@ try {
         </tbody>
     </table>
     <?php
-    //$scores is defined above
+    //pn253 05/12/22 This sets it to top scores and also sets the comp_id to be passed to scores_table.php
     $title = $comp . " Top Scores";
     $comp_id = $id;
     $duration = "competiton";

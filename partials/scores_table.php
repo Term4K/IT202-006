@@ -4,8 +4,8 @@
 if (!isset($duration)) {
     $duration = "day"; //choosing to default to day
 }
-if(!isset($competition_id)){
-    $competition_id = 1;
+if(!isset($comp_id)){
+    $comp_id = 4;
 }
 
 if (in_array($duration, ["day", "week", "month", "lifetime"])) {
@@ -16,7 +16,8 @@ if (in_array($duration, ["day", "week", "month", "lifetime"])) {
     }
     $results = get_latest_scores($user_id);
 } else if ($duration === "competiton"){
-    $results = get_top_scores_for_comp(10);
+    //pn253 05/12/22 this takes gets the top scores when duration is equal to "competition"
+    $results = get_top_scores_for_comp($comp_id, 10);
 }
 switch ($duration) {
     case "day":
@@ -41,6 +42,7 @@ switch ($duration) {
         $title = "Invalid Scoreboard";
         break;
 }
+//pn253 05/12/22 This generates the table through iteration of results from functions. 
 ?>
 <div class="card bg-dark">
     <div class="card-body">
