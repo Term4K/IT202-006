@@ -1,9 +1,10 @@
 # Project Name: Simple Arcade
 ## Project Summary: This project will create a simple Arcade with scoreboards and competitions based on the implemented game.
 ## Github Link: https://github.com/Term4K/IT202-006/tree/prod/public_html/Project
-## Project Board Link: 
+## Project Board Link: https://github.com/Term4K/IT202-006/projects/1
 ## Website Link: https://pn253-prod.herokuapp.com/Project
 ## Your Name: Przemyslaw Narewski
+## Demo Video: https://www.youtube.com/watch?v=GJKkRYACKY4
 
 <!-- Line item / Feature template (use this for each bullet point) -- DO NOT DELETE THIS SECTION
 
