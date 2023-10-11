@@ -1,6 +1,2 @@
 # IT202-006
-Przemyslaw
-
-I am currently a Junior with a major in Computer Science. I like to work on my car in my free time.
-
-I hope to have a fun semester and learn a lot in this class. 
+This is a small project done for my IT202 class that is a website in which a user can play a cookie clicker and save their scores. There are also multiple other features with the scores and points earned.
